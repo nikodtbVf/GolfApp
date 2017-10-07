@@ -13,6 +13,8 @@
 
 Route::resource('modulo','ModuloController');
 Route::resource('usuario','UsuarioController');
+Route::resource('uso','ModuloUsoController');
+//Route::get('/asignar_tiempo')
 Route::get('/admin',"AdminController@admin");
 
 Route::get('/', function () {
