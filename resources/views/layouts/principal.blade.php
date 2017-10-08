@@ -4,7 +4,8 @@
 	<title>Mini Golf</title>
 	 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+	
+	<link href="{{asset("css/modulos.css")}}" rel="stylesheet">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -28,10 +29,10 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="{!!URL::to('/')!!}">Pagina Principal <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href="{!!URL::to('/')!!}">Página Principal <span class="sr-only">(current)</span></a></li>
 	        <li><a href="#">Link</a></li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modulos<span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Módulos<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="{!!URL::to('/modulo')!!}">Listado</a></li>
 	            <li><a href="{!!URL::to('/modulo/create')!!}">Agregar Nuevo</a></li>
@@ -52,7 +53,7 @@
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="#">Link</a></li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Bienvenido {!!Auth::user()->name!!} <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="#">Action</a></li>
 	            <li><a href="#">Another action</a></li>

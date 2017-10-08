@@ -6,12 +6,15 @@
 	<!-- {!!Html::style('css/bootstrap.min.css')!!}-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+	
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-	{!!Html::assets('css/modulos.css')!!}
+	<!--<link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">-->
+	<link href="{{asset("css/modulos.css")}}" rel="stylesheet">
+
 </head>
 <body>
 
@@ -31,7 +34,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="{!!URL::to('/admin')!!}">Pagina Principal <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href="{!!URL::to('/admin')!!}">Página Principal <span class="sr-only">(current)</span></a></li>
 	        <li><a href="#">Link</a></li>
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios <span class="caret"></span></a>
@@ -46,7 +49,7 @@
 	          </ul>
 	        </li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modulos <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Módulos <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="{!!URL::to('/modulo')!!}">Listado</a></li>
 	            <li><a href="{!!URL::to('/modulo/create')!!}">Agregar</a></li>

@@ -8,6 +8,7 @@ use AppGolf\Http\Requests;
 use AppGolf\Http\Controllers\Controller;
 use AppGolf\Modulo;
 use AppGolf\ModuloUso;
+use Carbon\Carbon;
 use Session;
 use Redirect;
 use DB;
@@ -20,16 +21,29 @@ class ModuloUsoController extends Controller
 
       $modules = DB::table('modulos')
             ->orderBy('id', 'asc')
-            ->paginate(20);
-        return view('usomodulo.index',compact('modules'));
+            ->get();
+
+      $modulesuse = DB::table('modulo_usos')   
+                ->where('status', '=', 1)
+                ->get();   
+
+      foreach ($modules as $module){
+        $module->status = 0;
+         foreach ($modulesuse as $mu ) {
+             if($module->id == $mu->modulo_id){
+                $module->status = 1;
+             }
+         }
+      }
+     return view('usomodulo.index',compact('modules'));
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function asignar($idmodulo){
+        $modulo = Modulo::find($idmodulo);
+        return view('usomodulo.asignar',compact('modulo'));
+    }
+
     public function create()
     {
         //
@@ -43,7 +57,20 @@ class ModuloUsoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $numero = $request['numero'];
+        $module = DB::table('modulos')
+                ->where('numero', '=', $numero)
+                ->first();
+        ModuloUso::create([
+            'modulo_id' => $module->id, 
+            'user_id' => 1,
+            'init_time' => Carbon::now(),
+            'end_time' =>  Carbon::now()->addMinutes($request['minutos']),
+            'status' => 1,
+        ]);
+
+        return redirect('/uso')->with('message','Modulo creado exitosamente');
     }
 
     /**

@@ -16,4 +16,10 @@
 			{!!Form::password('password',['class'=>'form-control','placeholder'=>'Ingresa la contraseña del usuario'])!!}
 		</div>
 	</div>
-		
+	<div class="col-sm-12">
+		<div class="form-group col-sm-6">
+			{!!Form::label('Rol de Usuario:')!!}
+			{!!Form::select('rol', array('1' => 'Administrador', '0' => 'Normal'), '0',['class' => 'form-control'])!!}
+		</div>
+	</div>
+	

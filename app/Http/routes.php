@@ -14,9 +14,10 @@
 Route::resource('modulo','ModuloController');
 Route::resource('usuario','UsuarioController');
 Route::resource('uso','ModuloUsoController');
-//Route::get('/asignar_tiempo')
+Route::get('/asignar/{idmodulo}',"ModuloUsoController@asignar");
 Route::get('/admin',"AdminController@admin");
+Route::resource('login','LogController');
 
 Route::get('/', function () {
-    return view('index');
+    return view('logear');
 });

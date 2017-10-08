@@ -34,6 +34,7 @@ class UsuarioController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => $request['password'],
+            'rol' => 1,
         ]);
         return redirect('/usuario')->with('message','store');
     }
