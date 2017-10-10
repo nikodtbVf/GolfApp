@@ -11,6 +11,7 @@ use AppGolf\ModuloUso;
 use Carbon\Carbon;
 use Session;
 use Redirect;
+use Auth;
 use DB;
 
 class ModuloUsoController extends Controller
@@ -35,8 +36,7 @@ class ModuloUsoController extends Controller
              }
          }
       }
-     return view('usomodulo.index',compact('modules'));
-        
+     return view('usomodulo.index',compact('modules'));    
     }
 
     public function asignar($idmodulo){
@@ -64,7 +64,7 @@ class ModuloUsoController extends Controller
                 ->first();
         ModuloUso::create([
             'modulo_id' => $module->id, 
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'init_time' => Carbon::now(),
             'end_time' =>  Carbon::now()->addMinutes($request['minutos']),
             'status' => 1,

@@ -9,7 +9,7 @@
 		?>
 		<div class="col-sm-12 elementsdiv">
 			<div class="col-sm-4 divborder separar">
-				@if($j <= count($modules))		
+				@if($j < count($modules))		
 					<center>
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j]->nombre}}
@@ -59,7 +59,7 @@
 				@endif 
 			</div>
 			<div class="col-sm-4 divborder separar">
-				@if($j+1 <= count($modules))
+				@if($j+1 < count($modules))
 					<center>
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j+1]->nombre}}
@@ -107,7 +107,7 @@
 				@endif 
 			</div>
 			<div class="col-sm-4 divborder separar">
-				@if($j+2 <= count($modules))
+				@if($j+2 < count($modules))
 					<center>
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j+2]->nombre}}
