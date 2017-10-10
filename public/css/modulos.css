@@ -1,7 +1,7 @@
 .divborder {
   border: 1px solid #cecece;
-  width: 150px;
-  height: 250px;
+  width: 190px;
+  height: 320px;
   border-radius: 15px;
 }
 .elementsdiv {
@@ -28,4 +28,8 @@
 
 .centrado{
 	padding-top: 100px;
+}
+
+.color-hora{
+  color: #3e545f;
 }

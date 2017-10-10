@@ -1,8 +1,13 @@
 @extends('layouts.principal')
 
 @section('content')
-
-	
+	@if(Session::has('message'))
+		<div class="alert alert-success alert-dismissible" role="alert">
+			 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			 <strong>Notificacion:</strong> {{Session::get('message')}}
+		</div>
+	@endif
+		
 	@for ($i = 0; $i < ceil(count($modules)/3); $i++) 
 		<?php
 			$j = $i*3
@@ -14,16 +19,34 @@
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j]->nombre}}
 						</label>			
-						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.jpg')}}" width="200" height="280"> 
+						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.png')}}" width="100" height="100"> 
 							@if($modules[$j]->status == 0)
 								<label class="elementsdiv disponible">
 									Disponible
+								</label>
+								<br>		
+								<label class="color-hora">
+									N.A
+								</label>
+								<br>
+								<label class="color-hora">
+									N.A
 								</label>
 							@else
 								<label class="elementsdiv ocupado">
 									Ocupado
 								</label>
-							@endif		
+								<br>
+								<label class="color-hora">
+									
+									Hora Inicio: {{$modules[$j]->init_time}}
+								</label>
+								<br>
+								<label class="color-hora">
+									 Hora Fin: {{$modules[$j]->end_time}}
+								</label>							
+							@endif			
+						
 						<br>
 						<div class="botones">
 							<a type="button" class="btn btn-primary btn-xs" href="{{url('/asignar')}}/{{$modules[$j]->id}}" data-toggle="tooltip" data-placement="top" title="Asignar Tiempo"
@@ -64,14 +87,31 @@
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j+1]->nombre}}
 						</label>		
-						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.jpg')}}" width="200" height="280"> 
+						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.png')}}" width="100" height="100"> 
 						@if($modules[$j+1]->status == 0)
 								<label class="elementsdiv disponible">
 									Disponible
 								</label>
+								<br>
+								<label class="color-hora">
+									N.A
+								</label>	
+								<br>	
+								<label class="color-hora">
+									N.A
+								</label>
+								
 							@else
 								<label class="elementsdiv ocupado">
 									Ocupado
+								</label>
+								<br>
+								<label class="color-hora">
+									{{$modules[$j+1]->init_time}}
+								</label>
+								<br>
+								<label class="color-hora">
+									{{$modules[$j+1]->end_time}}
 								</label>
 							@endif
 						<br>
@@ -112,14 +152,30 @@
 						<label class="elementsdiv titulo-modulo">
 							{{$modules[$j+2]->nombre}}
 						</label>
-						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.jpg')}}" width="200" height="280"> 	
+						<img class="img-responsive img-rounded center-block " src="{{URL::asset('image/golf.png')}}" width="100" height="100"> 	
 						@if($modules[$j+2]->status == 0)
 							<label class="elementsdiv disponible">
 								Disponible
 							</label>
+							<br>
+							<label class="color-hora">
+								N.A
+							</label>
+							<br>
+							<label class="color-hora">
+								N.A
+							</label>
 						@else
 							<label class="elementsdiv ocupado">
 								Ocupado
+							</label>
+							<br>
+							<label class="color-hora">
+								{{$modules[$j+2]->init_time}}
+							</label>
+							<br>
+							<label class="color-hora">
+								{{$modules[$j+2]->end_time}}
 							</label>
 						@endif
 						<div class="botones">

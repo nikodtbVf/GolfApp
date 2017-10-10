@@ -28,14 +28,21 @@ class ModuloUsoController extends Controller
                 ->where('status', '=', 1)
                 ->get();   
 
+
       foreach ($modules as $module){
         $module->status = 0;
+        $module->init_time = 0;
+        $module->end_time =0;
          foreach ($modulesuse as $mu ) {
              if($module->id == $mu->modulo_id){
                 $module->status = 1;
+                $module->init_time = $mu->init_time;
+                $module->end_time = $mu->end_time;
              }
          }
+
       }
+
      return view('usomodulo.index',compact('modules'));    
     }
 
@@ -44,9 +51,12 @@ class ModuloUsoController extends Controller
         return view('usomodulo.asignar',compact('modulo'));
     }
 
-    public function create()
+    public function terminar($idmodulo)
     {
-        //
+        
+        ModuloUso::where('modulo_id', $idmodulo)->where('status',1)->update(array('status' => 0));
+        Session::flash('message','Modulo Editado Correctamente');
+        return $this->index();
     }
 
     /**
@@ -69,7 +79,6 @@ class ModuloUsoController extends Controller
             'end_time' =>  Carbon::now()->addMinutes($request['minutos']),
             'status' => 1,
         ]);
-
         return redirect('/uso')->with('message','Modulo creado exitosamente');
     }
 
